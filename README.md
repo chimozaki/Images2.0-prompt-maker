@@ -1,5 +1,7 @@
 # Images2.0 from ChatGPT プロンプトメーカー
 
+![スクリーンショット](example_screenshot.png)
+
 🌸 ChatGPT の画像生成向けに、自然文プロンプトを組み立てるための静的Webアプリです。  
 入力欄、ランダム生成、プリセット、履歴保存を使って、イラスト用プロンプトを整理できます。
 
@@ -51,6 +53,13 @@
 ### 🔄 更新時の注意
 公開後に `index.html`、`manifest.webmanifest`、アイコンなどを更新した場合は、`sw.js` の `CACHE_NAME` を変更すると、PWAキャッシュが更新されやすくなります。
 
+## ☕ Support
+
+このプロジェクトが役に立った場合は、Ko-fiで今後の開発を応援していただけると嬉しいです。
+
+☕ https://ko-fi.com/puniq
+
+ご支援ありがとうございます！
 ---
 
 ## EN English
@@ -97,6 +106,13 @@ When published with GitHub Pages, this repository works as a static web app usin
 ### 🔄 Updating
 After publishing, if you update `index.html`, `manifest.webmanifest`, icons, or other cached files, change the `CACHE_NAME` in `sw.js` so PWA caches refresh more reliably.
 
+## ☕ Support
+
+If you find this project useful and would like to support future development, you can support me on Ko-fi.
+
+☕ https://ko-fi.com/puniq
+
+Thank you for your support!
 ---
 
 ## TW 繁體中文（台灣）
@@ -143,6 +159,13 @@ After publishing, if you update `index.html`, `manifest.webmanifest`, icons, or 
 ### 🔄 更新提醒
 公開後若更新 `index.html`、`manifest.webmanifest`、圖示或其他快取檔案，建議修改 `sw.js` 的 `CACHE_NAME`，讓 PWA 快取更容易更新。
 
+## ☕ Support
+
+如果這個專案對您有幫助，歡迎透過 Ko-fi 支持後續開發。
+
+☕ https://ko-fi.com/puniq
+
+感謝您的支持！
 ---
 
 ## ES Español
@@ -188,3 +211,11 @@ Al publicarlo con GitHub Pages, este repositorio funciona como una app web está
 
 ### 🔄 Actualizaciones
 Después de publicar, si actualizas `index.html`, `manifest.webmanifest`, iconos u otros archivos cacheados, cambia el `CACHE_NAME` en `sw.js` para que la caché PWA se actualice con más fiabilidad.
+
+## ☕ Support
+
+Si este proyecto te resulta útil y deseas apoyar su desarrollo futuro, puedes apoyarme en Ko-fi.
+
+☕ https://ko-fi.com/puniq
+
+¡Muchas gracias por tu apoyo!
