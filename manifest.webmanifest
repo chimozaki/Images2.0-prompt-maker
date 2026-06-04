@@ -1,6 +1,6 @@
 {
   "name": "Images2.0 from ChatGPT プロンプトメーカー",
-  "short_name": "IMG2 Prompt v7.0",
+  "short_name": "IMG2 Prompt v7.1",
   "description": "ChatGPT Images2.0向けの自然文AI画像プロンプト作成ツール",
   "start_url": "./index.html",
   "scope": "./",
@@ -9,6 +9,18 @@
   "theme_color": "#ff5fa2",
   "orientation": "portrait",
   "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
     {
       "src": "./icon.svg",
       "sizes": "any",
