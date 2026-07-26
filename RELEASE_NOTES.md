@@ -14,26 +14,51 @@ Images2.0 from ChatGPT プロンプトメーカー v7.2.0では、ブラウザ�
 
 ### 💾 ローカル保存
 
-- `start_images2_prompt_manager.bat`から起動すると、入力内容・強度・プリセット・履歴・ユーザープール・表示設定を`data/images2-prompt-manager.json`へ自動保存
-- 変更前の状態を`data/images2-prompt-manager.previous.json`へ自動退避
-- ブラウザの`localStorage`も補助キャッシュとして維持
-- GitHub Pages版と`index.html`直接起動は、従来どおりブラウザ保存で動作
-- 入力・強度・プリセット・履歴・ユーザープール・表示設定をまとめた全データバックアップ／復元を追加
-- 対応ブラウザでは、全データ・履歴・プリセットのJSON保存先とファイル名を選択可能
+- 💾 **ローカルJSONへ自動保存**  
+  `start_images2_prompt_manager.bat`から起動すると、入力内容・強度・プリセット・履歴・ユーザープール・表示設定を`data/images2-prompt-manager.json`へ自動保存します。
+
+- 🛟 **ひとつ前の状態を自動退避**  
+  変更前の状態を`data/images2-prompt-manager.previous.json`へ保存し、復旧に使えるようにしました。
+
+- 🗃️ **ブラウザキャッシュも維持**  
+  ブラウザの`localStorage`を補助キャッシュとして残します。
+
+- 🌐 **GitHub Pages版も継続**  
+  GitHub Pages版と`index.html`直接起動は、従来どおりブラウザ保存で利用できます。
+
+- 📦 **全データのバックアップ・復元**  
+  入力・強度・プリセット・履歴・ユーザープール・表示設定を、1つのJSONでバックアップ／復元できるようにしました。
+
+- 📁 **JSONの保存先を選択可能**  
+  対応ブラウザでは、全データ・履歴・プリセットの保存先とファイル名を選べます。未対応ブラウザでは通常のダウンロードを使用します。
 
 ### 🔄 旧データ移行
 
-- ローカルJSONが空の場合だけ、旧ブラウザのデータを自動移行
-- 新しいブラウザが先に開いても、初期状態で旧データを上書きしない安全策を追加
-- BAT起動後、旧ブラウザで`http://localhost:4175/`を開くことで移行可能
+- 🔄 **旧ブラウザデータを安全に移行**  
+  ローカルJSONが空の場合だけ、旧ブラウザに残っているデータを自動移行します。
+
+- 🛡️ **初期状態による上書きを防止**  
+  新しいブラウザが先に開いても、初期状態で復旧可能な旧データを上書きしないようにしました。
+
+- 🔕 **移行案内の常時表示を廃止**  
+  移行処理は維持しつつ、画面上部の「旧ブラウザから移行できます」は常時表示しないようにしました。
 
 ### 🚀 起動・ドキュメント
 
-- Node.jsだけで動くローカルサーバーとWindows用BATを追加
-- サーバーの起動完了を待ってからブラウザを開くよう対応
-- 通常保存の成功表示や移行案内は常駐させず、ブラウザ保存・エラー時だけ小さな表示を追加
-- READMEへ初心者向けNode.js導入、BAT起動、移行、バックアップ手順を4言語で追加
-- PWAキャッシュをv7.2.0向けに更新
+- 🖥️ **Windows用BAT起動を追加**  
+  Node.jsだけで動くローカルサーバーと`start_images2_prompt_manager.bat`を追加しました。
+
+- ⏳ **サーバー起動待ちに対応**  
+  ローカルサーバーの起動完了を確認してからブラウザを開きます。
+
+- 🚦 **保存状態の表示を整理**  
+  通常保存の成功表示は常駐させず、ブラウザ保存のみの場合と保存エラー時だけ小さく表示します。
+
+- 📚 **初心者向けREADMEを整備**  
+  Node.jsの導入、BAT起動、旧データ移行、バックアップ手順を4言語で追加しました。
+
+- 📱 **PWAキャッシュを更新**  
+  Service Workerのキャッシュをv7.2.0向けに更新しました。
 
 ---
 
@@ -114,26 +139,51 @@ Images2.0 from ChatGPT Prompt Maker v7.2.0 adds browser-independent local JSON s
 
 ### 💾 Local Storage
 
-- Launching with `start_images2_prompt_manager.bat` automatically saves inputs, strengths, presets, history, user pools, and display settings to `data/images2-prompt-manager.json`
-- Automatically keeps the previous state in `data/images2-prompt-manager.previous.json`
-- Retains browser `localStorage` as a secondary cache
-- GitHub Pages and direct `index.html` continue to use browser-only storage
-- Added full backup and restore for inputs, strengths, presets, history, user pools, and display settings
-- Supported browsers can choose the destination and file name for full-data, history, and preset JSON exports
+- 💾 **Automatic local JSON storage**  
+  Launching with `start_images2_prompt_manager.bat` saves inputs, strengths, presets, history, user pools, and display settings to `data/images2-prompt-manager.json`.
+
+- 🛟 **Automatic previous-state backup**  
+  The state before each change is kept in `data/images2-prompt-manager.previous.json` for recovery.
+
+- 🗃️ **Browser cache retained**  
+  Browser `localStorage` remains available as a secondary cache.
+
+- 🌐 **GitHub Pages remains available**  
+  GitHub Pages and direct `index.html` continue to work with browser-only storage.
+
+- 📦 **Full-data backup and restore**  
+  Inputs, strengths, presets, history, user pools, and display settings can be moved together in one JSON file.
+
+- 📁 **Selectable JSON destination**  
+  Supported browsers can choose the destination and file name for full-data, history, and preset exports. Other browsers use the normal download behavior.
 
 ### 🔄 Legacy Data Migration
 
-- Automatically migrates legacy browser data only when local JSON is empty
-- Prevents a new browser's initial state from replacing recoverable old data
-- Old data can be migrated by opening `http://localhost:4175/` in the previous browser while the BAT is running
+- 🔄 **Safe legacy-browser migration**  
+  Legacy browser data is migrated automatically only when the local JSON file is empty.
+
+- 🛡️ **Protection from initial-state overwrite**  
+  A new browser's initial state cannot replace recoverable data from the previous browser.
+
+- 🔕 **Removed the persistent migration notice**  
+  The migration logic remains available without keeping the “legacy browser migration” notice at the top of the screen.
 
 ### 🚀 Startup & Documentation
 
-- Added a dependency-free Node.js local server and Windows BAT launcher
-- Waits for the server before opening the browser
-- Keeps success and migration notices out of the way, showing a compact notice only for browser-only storage or errors
-- Added beginner-friendly Node.js, BAT, migration, and backup instructions in four README languages
-- Updated the PWA cache for v7.2.0
+- 🖥️ **Added a Windows BAT launcher**  
+  Added a dependency-free Node.js local server and `start_images2_prompt_manager.bat`.
+
+- ⏳ **Waits for server startup**  
+  The launcher waits until the local server is ready before opening the browser.
+
+- 🚦 **Simplified storage status display**  
+  Normal save success is not shown persistently; a compact notice appears only for browser-only storage or save errors.
+
+- 📚 **Expanded beginner-friendly documentation**  
+  Added Node.js installation, BAT startup, migration, and backup instructions in four README languages.
+
+- 📱 **Updated the PWA cache**  
+  Updated the Service Worker cache for v7.2.0.
 
 ---
 
