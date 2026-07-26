@@ -1,6 +1,6 @@
 {
   "name": "Images2.0 from ChatGPT プロンプトメーカー",
-  "short_name": "IMG2 Prompt v7.1",
+  "short_name": "IMG2 Prompt v7.2",
   "description": "ChatGPT Images2.0向けの自然文AI画像プロンプト作成ツール",
   "start_url": "./index.html",
   "scope": "./",

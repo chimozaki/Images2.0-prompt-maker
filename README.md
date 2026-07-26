@@ -14,12 +14,12 @@
 ### ✨ 主な機能
 - 📝 テーマ、キャラクター、衣装、構図、光、ネガティブなどを項目ごとに編集
 - 🎲 各項目のランダム生成と、保存したプールからの呼び出し
-- 💾 プリセット、履歴、ユーザー追加プールをブラウザ内に保存
+- 💾 BAT起動時は入力、プリセット、履歴、ユーザー追加プールをローカルJSONへ自動保存
 - 📤 JSONでプリセットや履歴をエクスポート・インポート
 - 📱 PWA対応。ホーム画面に追加してアプリ風に利用可能
 
 ### 🧑‍🏫 かんたんな使い方
-1. 🌐 GitHub Pagesのページをブラウザで開きます。
+1. 🖥️ Windowsでは `start_images2_prompt_manager.bat` を起動します。GitHub Pages版も従来どおり利用できます。
 2. 📝 `入力・調整` で、イラストテーマ、キャラクター、衣装、構図などを書きます。
 3. 🎲 迷った項目はサイコロボタンを押すと、ランダムで文章が入ります。
 4. 📋 保存済みの文章を使いたい時は、メモのようなボタンからプールを開いて選びます。
@@ -37,10 +37,49 @@
 - ✨ 最適化：文章の余分な空白などを整え、安定しやすい設定にします。
 - 🧹 全クリア：入力内容をまとめて消します。押す前に確認が出ます。
 
+### 🖥️ Windowsでの推奨起動方法
+
+#### 初回だけ：Node.jsを準備する
+
+1. まず `start_images2_prompt_manager.bat` をダブルクリックします。ブラウザが開けば、Node.jsは導入済みです。
+2. 黒い画面に「Node.js is not installed...」と表示された場合は、[Node.js公式ダウンロードページ](https://nodejs.org/en/download)を開きます。
+3. **LTS（長期サポート版）**を選び、Windows用インストーラー（`.msi`）をダウンロードします。「Current」ではなく「LTS」を選んでください。
+4. `.msi`をダブルクリックし、基本的に `Next` → 利用規約に同意 → `Next` → `Install` → `Finish` と初期設定のまま進めます。
+5. Windowsを再起動し、もう一度BATをダブルクリックします。
+
+確認したい場合は、スタートメニューで「コマンドプロンプト」を開き、`node -v`を入力します。`v24...`のように`v`から始まる番号が表示されれば準備完了です。npm操作は不要です。
+
+#### 毎回の起動
+
+1. GitHubからZIPをダウンロードした場合は、右クリックして「すべて展開」します。ZIPの中から直接実行しないでください。
+2. 展開したフォルダの `start_images2_prompt_manager.bat` をダブルクリックします。
+3. ブラウザで `http://localhost:4175/` が自動で開きます。
+4. 使用中は、最小化されている「Images2 Prompt Manager Local Server」の黒い画面を閉じないでください。
+
+> [!IMPORTANT]
+> ローカルJSONへ保存したい場合は、毎回BATから起動してください。`index.html`の直接起動やGitHub Pages版は、従来どおりブラウザ保存のみです。
+
+#### 以前のブラウザから移行する
+
+以前から同じ`http://localhost:4175/`を使っていた場合は、ローカルJSONが空のときだけ旧ブラウザデータを自動移行します。BATを起動したまま、以前使っていたブラウザで同じURLを開いてください。
+
+GitHub Pages版や`index.html`直接起動から移す場合は、URLが違うため次の手順を使います。
+
+1. 旧データが見えるブラウザで元のアプリを開きます。
+2. `履歴`タブの「全データをバックアップ」を押します。
+3. BAT版の `http://localhost:4175/` を開きます。
+4. `履歴`タブの「全データを復元」を押し、保存したJSONを選びます。
+
+全データバックアップには、現在の入力、強度、プリセット、履歴、ユーザープール、表示設定が含まれます。
+対応ブラウザでは保存先とファイル名を選べます。保存先選択に未対応のブラウザでは、通常のダウンロードフォルダへ保存されます。
+
 ### 🔒 データ保存について
-- 入力内容、履歴、プリセット、追加プールはブラウザの `localStorage` に保存されます。
+- BAT起動時の主データ：`data/images2-prompt-manager.json`
+- ひとつ前の状態：`data/images2-prompt-manager.previous.json`
+- ブラウザの `localStorage` にも補助キャッシュを残します。
+- GitHub Pages版と`index.html`直接起動では、ブラウザの `localStorage`だけを使用します。
 - サーバー同期、アカウント同期、クラウド保存はありません。
-- ブラウザのデータ削除や別端末利用では、保存内容は引き継がれません。
+- アプリのフォルダごと更新・交換する場合は、先に`data`フォルダを安全な場所へコピーしてください。
 
 ### 🧭 利用上のメモ
 - このツールは画像生成プロンプト作成を補助する個人制作ツールです。
@@ -67,12 +106,12 @@
 ### ✨ Features
 - 📝 Edit prompt parts such as theme, character, costume, composition, lighting, and negative prompts
 - 🎲 Randomize fields and reuse saved prompt pools
-- 💾 Save presets, history, and custom pools in the browser
+- 💾 Save inputs, presets, history, and custom pools to a local JSON file when launched with the BAT
 - 📤 Export and import presets/history as JSON
 - 📱 PWA-ready, so it can be added to a home screen
 
 ### 🧑‍🏫 Simple How to Use
-1. 🌐 Open the GitHub Pages site in your browser.
+1. 🖥️ On Windows, run `start_images2_prompt_manager.bat`. The GitHub Pages version remains available.
 2. 📝 In `Input & Adjust`, write the theme, character, costume, composition, and other details.
 3. 🎲 If you are not sure what to write, press a dice button to fill that field randomly.
 4. 📋 To reuse saved text, open the pool button and choose an item.
@@ -90,10 +129,32 @@
 - ✨ Optimize: cleans up spacing and adjusts settings for more stable results.
 - 🧹 Clear All: clears the current inputs after a confirmation.
 
+### 🖥️ Recommended Windows Setup
+
+1. First, double-click `start_images2_prompt_manager.bat`. If the browser opens, Node.js is already installed.
+2. If the black window says “Node.js is not installed...”, open the [official Node.js download page](https://nodejs.org/en/download).
+3. Download and run the Windows installer (`.msi`) for the **LTS** release, not “Current.” Keep the default installer options and restart Windows.
+4. If you downloaded a ZIP, select “Extract All.” Do not run the app from inside the ZIP.
+5. Double-click the BAT. It opens `http://localhost:4175/` automatically.
+6. Keep the minimized “Images2 Prompt Manager Local Server” window open while using the app.
+
+No npm command is required. To verify Node.js, open Command Prompt and enter `node -v`.
+
+> [!IMPORTANT]
+> Start with the BAT whenever you want local JSON storage. Direct `index.html` and GitHub Pages use browser-only storage.
+
+If the old app already used `http://localhost:4175/`, keep the BAT running and open that URL in the previous browser; the app migrates it when local JSON is empty.
+
+To move from GitHub Pages or direct `index.html`, open the old app where the data is visible, go to `History`, and choose “Back up all data.” Then open the BAT version, choose “Restore all data,” and select the downloaded JSON. The full backup includes inputs, strengths, presets, history, user pools, and display settings.
+Supported browsers let you choose the destination and file name. Other browsers use the normal Downloads folder.
+
 ### 🔒 Data Storage
-- Inputs, history, presets, and custom pools are stored in the browser `localStorage`.
+- BAT primary data: `data/images2-prompt-manager.json`
+- Previous state: `data/images2-prompt-manager.previous.json`
+- Browser `localStorage` remains as a secondary cache.
+- GitHub Pages and direct `index.html` use browser-only storage.
 - There is no server sync, account sync, or cloud storage.
-- Saved data will not automatically move across browsers or devices.
+- Copy the `data` folder before replacing the entire app folder with a newer version.
 
 ### 🧭 Notes
 - This is a personal prompt-helper tool for image generation workflows.
@@ -120,12 +181,12 @@ Thank you for your support!
 ### ✨ 主要功能
 - 📝 分項編輯主題、角色、服裝、構圖、光線、負面提示詞等內容
 - 🎲 可隨機產生各欄位，也可從已儲存的提示詞池呼叫
-- 💾 將預設、歷史紀錄、使用者自訂提示詞池儲存在瀏覽器中
-- 📤 支援以 JSON 匯出、匯入預設與歷史紀錄
+- 💾 透過BAT啟動時，將輸入、預設、歷史紀錄與自訂提示詞池自動儲存到本機JSON
+- 📤 支援以 JSON 匯出、匯入預設與歷史紀錄；支援的瀏覽器可選擇儲存位置
 - 📱 支援 PWA，可加入主畫面像 App 一樣使用
 
 ### 🧑‍🏫 簡單使用方法
-1. 🌐 用瀏覽器打開 GitHub Pages 頁面。
+1. 🖥️ Windows請執行 `start_images2_prompt_manager.bat`。仍可繼續使用GitHub Pages版。
 2. 📝 在 `輸入・調整` 裡填寫主題、角色、服裝、構圖等內容。
 3. 🎲 不知道要寫什麼時，可以按骰子按鈕，讓系統隨機填入文字。
 4. 📋 想使用已儲存的文字時，按池子按鈕，從清單中選擇。
@@ -143,10 +204,25 @@ Thank you for your support!
 - ✨ 最佳化：整理多餘空白，並調整成較穩定的設定。
 - 🧹 全部清除：確認後清空目前輸入內容。
 
+### 🖥️ Windows建議啟動方式
+
+1. 先雙擊 `start_images2_prompt_manager.bat`。若瀏覽器正常開啟，表示已安裝Node.js。
+2. 若黑色視窗顯示「Node.js is not installed...」，請開啟[Node.js官方下載頁面](https://nodejs.org/en/download)。
+3. 下載 **LTS** 的Windows安裝程式（`.msi`），使用預設選項完成安裝並重新啟動Windows。
+4. 從GitHub下載ZIP時，請選擇「全部解壓縮」，不要直接從ZIP內執行。
+5. 雙擊BAT後，`http://localhost:4175/`會自動開啟。使用期間請勿關閉最小化的伺服器視窗。
+
+不需要執行npm指令。若舊版已使用 `http://localhost:4175/`，請保持BAT執行並用舊瀏覽器開啟該網址，本機JSON為空時會自動移轉。
+
+若要從GitHub Pages或直接開啟的`index.html`移轉，請在看得到舊資料的頁面進入「履歷」，按「備份全部資料」。接著開啟BAT版，在「履歷」按「還原全部資料」，選擇下載的JSON。
+
 ### 🔒 資料儲存
-- 輸入內容、歷史紀錄、預設與自訂提示詞池會儲存在瀏覽器的 `localStorage`。
+- BAT主資料：`data/images2-prompt-manager.json`
+- 上一個狀態：`data/images2-prompt-manager.previous.json`
+- 瀏覽器 `localStorage`仍作為輔助快取。
+- GitHub Pages與直接開啟`index.html`時，只使用瀏覽器儲存。
 - 沒有伺服器同步、帳號同步或雲端儲存。
-- 若清除瀏覽器資料，或在其他裝置使用，資料不會自動同步。
+- 更換整個應用程式資料夾前，請先複製`data`資料夾。
 
 ### 🧭 使用說明
 - 這是個人製作的圖片生成提示詞輔助工具。
@@ -173,12 +249,12 @@ Thank you for your support!
 ### ✨ Funciones principales
 - 📝 Edita partes del prompt como tema, personaje, vestuario, composición, luz y prompt negativo
 - 🎲 Genera campos al azar y reutiliza pools de prompts guardados
-- 💾 Guarda presets, historial y pools personalizados en el navegador
-- 📤 Exporta e importa presets e historial como JSON
+- 💾 Al iniciar con el BAT, guarda entradas, presets, historial y pools en un JSON local
+- 📤 Exporta e importa presets e historial como JSON; los navegadores compatibles permiten elegir la ubicación
 - 📱 Compatible con PWA para añadirlo a la pantalla de inicio
 
 ### 🧑‍🏫 Uso fácil
-1. 🌐 Abre la página de GitHub Pages en tu navegador.
+1. 🖥️ En Windows, ejecuta `start_images2_prompt_manager.bat`. La versión de GitHub Pages sigue disponible.
 2. 📝 En `Entrada y ajustes`, escribe el tema, personaje, vestuario, composición y otros detalles.
 3. 🎲 Si no sabes qué escribir, pulsa el botón de dado para rellenar ese campo al azar.
 4. 📋 Para usar texto guardado, abre el botón de pool y elige una opción.
@@ -196,10 +272,25 @@ Thank you for your support!
 - ✨ Optimizar: limpia espacios y ajusta opciones para resultados más estables.
 - 🧹 Borrar todo: borra las entradas actuales después de confirmar.
 
+### 🖥️ Inicio recomendado en Windows
+
+1. Haz doble clic en `start_images2_prompt_manager.bat`. Si se abre el navegador, Node.js ya está instalado.
+2. Si aparece “Node.js is not installed...”, abre la [página oficial de descarga de Node.js](https://nodejs.org/en/download).
+3. Descarga el instalador de Windows (`.msi`) de la versión **LTS**, usa las opciones predeterminadas y reinicia Windows.
+4. Si descargaste un ZIP, selecciona “Extraer todo”; no ejecutes la aplicación dentro del ZIP.
+5. Ejecuta el BAT. Se abrirá `http://localhost:4175/`. Mantén abierta la ventana minimizada del servidor.
+
+No se requiere ningún comando npm. Si la versión anterior ya usaba `http://localhost:4175/`, abre esa URL en el navegador anterior mientras el BAT está activo; se migrará cuando el JSON local esté vacío.
+
+Para migrar desde GitHub Pages o un `index.html` directo, abre la aplicación antigua donde se ven los datos, entra en `Historial` y selecciona la copia de todos los datos. Después abre la versión BAT, elige restaurar todos los datos y selecciona el JSON descargado.
+
 ### 🔒 Almacenamiento de datos
-- Las entradas, el historial, los presets y los pools personalizados se guardan en `localStorage` del navegador.
+- Datos principales del BAT: `data/images2-prompt-manager.json`
+- Estado anterior: `data/images2-prompt-manager.previous.json`
+- `localStorage` del navegador se conserva como caché secundaria.
+- GitHub Pages y `index.html` directo usan solamente el almacenamiento del navegador.
 - No hay sincronización con servidor, cuenta ni nube.
-- Los datos no se transfieren automáticamente entre navegadores o dispositivos.
+- Copia la carpeta `data` antes de sustituir toda la carpeta de la aplicación.
 
 ### 🧭 Notas de uso
 - Esta es una herramienta personal para ayudar a crear prompts de generación de imágenes.

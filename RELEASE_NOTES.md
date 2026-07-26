@@ -6,6 +6,37 @@
 
 ## JP 日本語
 
+### 🎉 Version 7.2.0
+
+**Updated: 2026-07-26**
+
+Images2.0 from ChatGPT プロンプトメーカー v7.2.0では、ブラウザ変更時にもデータを共有できるローカルJSON保存を追加しました。
+
+### 💾 ローカル保存
+
+- `start_images2_prompt_manager.bat`から起動すると、入力内容・強度・プリセット・履歴・ユーザープール・表示設定を`data/images2-prompt-manager.json`へ自動保存
+- 変更前の状態を`data/images2-prompt-manager.previous.json`へ自動退避
+- ブラウザの`localStorage`も補助キャッシュとして維持
+- GitHub Pages版と`index.html`直接起動は、従来どおりブラウザ保存で動作
+- 入力・強度・プリセット・履歴・ユーザープール・表示設定をまとめた全データバックアップ／復元を追加
+- 対応ブラウザでは、全データ・履歴・プリセットのJSON保存先とファイル名を選択可能
+
+### 🔄 旧データ移行
+
+- ローカルJSONが空の場合だけ、旧ブラウザのデータを自動移行
+- 新しいブラウザが先に開いても、初期状態で旧データを上書きしない安全策を追加
+- BAT起動後、旧ブラウザで`http://localhost:4175/`を開くことで移行可能
+
+### 🚀 起動・ドキュメント
+
+- Node.jsだけで動くローカルサーバーとWindows用BATを追加
+- サーバーの起動完了を待ってからブラウザを開くよう対応
+- 通常保存の成功表示や移行案内は常駐させず、ブラウザ保存・エラー時だけ小さな表示を追加
+- READMEへ初心者向けNode.js導入、BAT起動、移行、バックアップ手順を4言語で追加
+- PWAキャッシュをv7.2.0向けに更新
+
+---
+
 ### 🎉 Version 7.1.0
 
 **Updated: 2026-06-04**
@@ -74,6 +105,37 @@ Images2.0 from ChatGPT プロンプトメーカー v7.1.0 では、公開準備�
 ---
 
 ## EN English
+
+### 🎉 Version 7.2.0
+
+**Updated: 2026-07-26**
+
+Images2.0 from ChatGPT Prompt Maker v7.2.0 adds browser-independent local JSON storage while preserving the existing GitHub Pages experience.
+
+### 💾 Local Storage
+
+- Launching with `start_images2_prompt_manager.bat` automatically saves inputs, strengths, presets, history, user pools, and display settings to `data/images2-prompt-manager.json`
+- Automatically keeps the previous state in `data/images2-prompt-manager.previous.json`
+- Retains browser `localStorage` as a secondary cache
+- GitHub Pages and direct `index.html` continue to use browser-only storage
+- Added full backup and restore for inputs, strengths, presets, history, user pools, and display settings
+- Supported browsers can choose the destination and file name for full-data, history, and preset JSON exports
+
+### 🔄 Legacy Data Migration
+
+- Automatically migrates legacy browser data only when local JSON is empty
+- Prevents a new browser's initial state from replacing recoverable old data
+- Old data can be migrated by opening `http://localhost:4175/` in the previous browser while the BAT is running
+
+### 🚀 Startup & Documentation
+
+- Added a dependency-free Node.js local server and Windows BAT launcher
+- Waits for the server before opening the browser
+- Keeps success and migration notices out of the way, showing a compact notice only for browser-only storage or errors
+- Added beginner-friendly Node.js, BAT, migration, and backup instructions in four README languages
+- Updated the PWA cache for v7.2.0
+
+---
 
 ### 🎉 Version 7.1.0
 
